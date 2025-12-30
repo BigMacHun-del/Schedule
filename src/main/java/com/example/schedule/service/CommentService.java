@@ -2,6 +2,8 @@ package com.example.schedule.service;
 
 import com.example.schedule.dto.Comment.CreateCommentRequest;
 import com.example.schedule.dto.Comment.CreateCommentResponse;
+import com.example.schedule.dto.Comment.GetCommentListResponse;
+import com.example.schedule.dto.Comment.GetScheduleCommentResponse;
 import com.example.schedule.entity.Comment;
 import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.CommentRepository;
@@ -9,6 +11,10 @@ import com.example.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +50,37 @@ public class CommentService {
                 saveComment.getCommentWriterName(),
                 saveComment.getCommentCreateDate(),
                 saveComment.getCommentUpdateDate()
+        );
+    }
+
+    //일정 조회 업그레이드
+    @Transactional(readOnly = true)
+    public GetScheduleCommentResponse getAllPlusComment(Long scheduleId){
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalArgumentException("없는 일정입니다.")
+        );
+
+        List<Comment> comments = commentRepository.findByScheduleId(scheduleId);
+
+        List<GetCommentListResponse> dtos = new ArrayList<>();
+        for (Comment comment : comments) {
+            GetCommentListResponse dto  = new GetCommentListResponse(
+                    comment.getCommentId(),
+                    comment.getCommentContent(),
+                    comment.getCommentWriterName(),
+                    comment.getCommentCreateDate(),
+                    comment.getCommentUpdateDate()
+            );
+            dtos.add(dto);
+        }
+        return new GetScheduleCommentResponse(
+                schedule.getScheduleId(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getName(),
+                schedule.getCreateDate(),
+                schedule.getUpdateDate(),
+                dtos//scheduleId값을 가진 comment들 모두 출력
         );
     }
 }
