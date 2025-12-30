@@ -52,4 +52,8 @@ public class Schedule {
         updateDate = new Date();
     }
 
+    public void updateSchedule(String title, String name){
+        this.title = title;
+        this.name = name;
+    }
 }
