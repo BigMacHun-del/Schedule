@@ -1,6 +1,6 @@
 package com.example.schedule.service;
 
-import com.example.schedule.dto.*;
+import com.example.schedule.dto.Schedule.*;
 import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -90,6 +90,8 @@ public class ScheduleService {
         );
     }
 
+    //일정 삭제
+    @Transactional
     public void deleteSchedule(Long scheduleId) {
         boolean existence = scheduleRepository.existsById(scheduleId);
 

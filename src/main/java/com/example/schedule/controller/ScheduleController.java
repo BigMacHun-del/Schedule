@@ -1,20 +1,20 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.dto.*;
+import com.example.schedule.dto.Schedule.*;
+import com.example.schedule.service.CommentService;
 import com.example.schedule.service.ScheduleService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class ScheduleController {
     private final ScheduleService scheduleService;
+    private final CommentService commentService;
 
     //일정 생성
     @PostMapping("/schedules")

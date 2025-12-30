@@ -1,8 +1,7 @@
-package com.example.schedule.dto;
+package com.example.schedule.dto.Schedule;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 @Getter
