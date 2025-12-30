@@ -34,10 +34,10 @@ public class ScheduleService {
         );
     }
 
-    //일정 전체 조회
+    //일정 전체 조회(작성자 명 오름차순으로 그룹 묶고, 수정일 기준으로 내림차순)
     @Transactional(readOnly = true)
     public List<GetScheduleResponse> getAllSchedule(){
-        List<Schedule> schedules = scheduleRepository.findAll();
+        List<Schedule> schedules = scheduleRepository.findAllByOrderByNameAscUpdateDateDesc();
 
         List<GetScheduleResponse> dtos = new ArrayList<>();
         for (Schedule schedule : schedules) {
