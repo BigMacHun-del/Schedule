@@ -60,7 +60,7 @@ public class CommentService {
                 () -> new IllegalArgumentException("없는 일정입니다.")
         );
 
-        List<Comment> comments = commentRepository.findByScheduleId(scheduleId); ///리스트를 받아오긴 하는데 반환 타입이 애매
+        List<Comment> comments = commentRepository.findByScheduleId(scheduleId);
 
         List<GetCommentListResponse> dtos = new ArrayList<>();
         for (Comment comment : comments) {
