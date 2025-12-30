@@ -89,4 +89,14 @@ public class ScheduleService {
                 schedule.getUpdateDate()
         );
     }
+
+    public void deleteSchedule(Long scheduleId) {
+        boolean existence = scheduleRepository.existsById(scheduleId);
+
+        if (!existence){
+            throw new IllegalArgumentException("없는 일정입니다.");
+        }
+
+        scheduleRepository.deleteById(scheduleId);
+    }
 }
