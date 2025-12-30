@@ -1,12 +1,11 @@
-package com.example.schedule.dto;
+package com.example.schedule.dto.Comment;
 
 import lombok.Getter;
-
-import java.util.Date;
 
 @Getter
 public class CreateCommentRequest {
     private String commentWriterName;
     private String commentPassword;
     private String commentContent;
+    private Long scheduleId;
 }

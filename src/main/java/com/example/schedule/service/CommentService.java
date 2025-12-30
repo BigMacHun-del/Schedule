@@ -1,7 +1,7 @@
 package com.example.schedule.service;
 
-import com.example.schedule.dto.CreateCommentRequest;
-import com.example.schedule.dto.CreateCommentResponse;
+import com.example.schedule.dto.Comment.CreateCommentRequest;
+import com.example.schedule.dto.Comment.CreateCommentResponse;
 import com.example.schedule.entity.Comment;
 import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.CommentRepository;
@@ -26,13 +26,13 @@ public class CommentService {
                 request.getCommentContent(),
                 request.getCommentWriterName(),
                 request.getCommentPassword(),
-                schedule
+                scheduleId
         );
 
         Comment saveComment = commentRepository.save(comment);
         return new CreateCommentResponse(
                 saveComment.getCommentId(),
-                saveComment.getSchedule(),
+                saveComment.getScheduleId(),
                 saveComment.getCommentContent(),
                 saveComment.getCommentWriterName(),
                 saveComment.getCommentCreateDate(),

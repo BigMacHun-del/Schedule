@@ -1,15 +1,13 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.dto.*;
+import com.example.schedule.dto.Schedule.*;
 import com.example.schedule.service.CommentService;
 import com.example.schedule.service.ScheduleService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,12 +49,5 @@ public class ScheduleController {
     public ResponseEntity<Void> deleteSchedule(@PathVariable Long scheduleId){
         scheduleService.deleteSchedule(scheduleId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-
-    //댓글 생성
-    @PostMapping("/schedules/comments/{scheduleId}")
-    public ResponseEntity<CreateCommentResponse> creatComment(@PathVariable Long scheduleId, @RequestBody CreateCommentRequest request){
-        CreateCommentResponse result = commentService.save(scheduleId, request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

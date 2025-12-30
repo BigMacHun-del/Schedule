@@ -19,12 +19,12 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;  //댓글 고유 id
 
-//    @Id
-//    private Long scheduleId;  //댓글 달 일정의 id
+    @Column(nullable = false)
+    private Long scheduleId;  //댓글 달 일정의 id
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "scheduleId", nullable = false)
-    private Schedule schedule;
+//    @ManyToOne(fetch = FetchType.LAZY)  //다대일 선언
+//    @JoinColumn(name = "scheduleId", nullable = false)  //외래키 정의
+//    private Schedule schedule;
 
     @Column(nullable = false)
     private String commentWriterName;  //댓글 작성자 명
@@ -41,11 +41,11 @@ public class Comment {
     @Column(nullable = false)
     private Date commentUpdateDate;  //댓글 수정일
 
-    public Comment(String commentWriterName, String commentPassword, String commentContent, Schedule schedule){
+    public Comment(String commentWriterName, String commentPassword, String commentContent, Long scheduleId){
         this.commentWriterName = commentWriterName;
         this.commentPassword = commentPassword;
         this.commentContent = commentContent;
-        this.schedule = schedule;
+        this.scheduleId = scheduleId;
     }
 
 
