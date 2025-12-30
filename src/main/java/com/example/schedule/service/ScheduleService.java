@@ -53,4 +53,21 @@ public class ScheduleService {
         }
         return dtos;
     }
+
+    //일정 단건 조회
+    @Transactional(readOnly = true)
+    public GetScheduleResponse getOneSchedule(Long scheduleId){
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalArgumentException("없는 일정입니다.")
+        );
+
+        return new GetScheduleResponse(
+                schedule.getScheduleId(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getName(),
+                schedule.getCreateDate(),
+                schedule.getUpdateDate()
+        );
+    }
 }
