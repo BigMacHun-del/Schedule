@@ -14,23 +14,28 @@ import java.util.Date;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long scheduleId;
+    private Long scheduleId;  //일정 고유 id
 
-    @Column(length = 50, nullable = false)
-    private String title;
+    @Column(length = 30, nullable = false)
+    private String title;  //일정 제목
 
     @Column(length = 200, nullable = false)
-    private String content;
+    private String content;  //일정 내용
+
+    @Column(length = 100, nullable = false)
+    private String comment;  //댓글
+
     @Column(length = 20, nullable = false)
-    private String name;
+    private String name;  //작성자 명
+
     @Column(length = 30, nullable = false)
-    private String password;
+    private String password;  //비밀번호
 
     @Column(nullable = false)
-    private Date createDate;
+    private Date createDate;  //생성일
 
     @Column(nullable = false)
-    private Date updateDate;
+    private Date updateDate;  //수정일
 
     public Schedule(String title, String content, String name, String password){
         this.content = content;
