@@ -152,12 +152,11 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
 - **Method:** PUT
 - **API 엔드포인트:** PUT /schedules/{scheduleId}
 - **Path Parameters:** key: scheduleId, Type: Long, 필수
-- **Body:**  `title` ,`content`, `name`입력 `password` 필수 입력 
+- **Body:**  `title` , `name`입력 `password` 필수 입력 
 
     ```json lines
     {
     	"title" : "2026년 신정 다음 날",
-        "content" : "2026년 1월 2일이다.",
     	"name" : "김대훈2",
     	"password" : "1234"
     }
@@ -172,7 +171,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
       {
            "scheduleId": 1,
            "title" : "2026년 신정 다음 날",
-	       "content" : "2026년 1월 2일이다.",
+	       "content" : "2026년 1월 1일이다.",
 	       "name" : "김대훈2",
 	       "createDate" : "2025-12-29 15:13:21",
            "updateDate" : "2025-12-30 00:00:00"
