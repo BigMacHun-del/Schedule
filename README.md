@@ -264,6 +264,53 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
       "message": "요청을 처리하는 중 서버에서 오류가 발생했습니다."
     }
     ```
+  
+## `댓글 생성`
+
+**Request**
+- **Method:** POST
+- **API 엔드포인트:** POST /schedules/comments/{scheduleId}
+- **Path Parameters:** key: scheduleId, Type: Long, 필수
+- **Body:**  `commentWriterName` ,`commentPassword`, `commentContent` 필수 입력
+
+    ```json lines
+    {
+    	"commentWriterName" : "김대훈",
+    	"commentPassword" : "1234",
+    	"commentContent" : "2026년 새해 복 많이 받으세요~",
+    }
+    ```
+- commentCreateDate, commentUpdateDate는 서버 자동 생성
+
+**Response**
+- **Status Code: `201 Created`** 생성 성공
+    - **Body**
+
+      **설명:** 서버에서 `commentId`가 부여된 완전한 `comment` 객체를 반환.(password 제외)
+
+    ```json lines
+    {
+        "commentId": 1,
+	    "scheduleId" : 1,
+	    "commentContent" : "2026년 새해 복 많이 받으세요~",
+	    "commentWriterName" : "김대훈",
+	    "commentCreateDate" : "2025-12-29 15:13:21",
+        "commentUpdateDate" : "2025-12-29 15:13:21"
+    }
+    ```
+
+- **Status Code: `400 Bad Request`** 요청 오류
+    - **Body:**
+
+      **설명:**   필수 필드가 누락된 경우 발생.
+
+    ```json
+    {
+      "message": "일정 제목, 일정 내용, 작성자명, 비밀번호는 필수 입력입니다."
+    }
+    ```
+
+
 
 ## ERD
-![img.png](image/img_1.png)
+![img.png](img.png)
