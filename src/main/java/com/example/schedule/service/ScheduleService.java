@@ -90,6 +90,8 @@ public class ScheduleService {
         );
     }
 
+    //일정 삭제
+    @Transactional
     public void deleteSchedule(Long scheduleId) {
         boolean existence = scheduleRepository.existsById(scheduleId);
 

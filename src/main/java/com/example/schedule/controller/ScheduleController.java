@@ -1,6 +1,7 @@
 package com.example.schedule.controller;
 
 import com.example.schedule.dto.*;
+import com.example.schedule.service.CommentService;
 import com.example.schedule.service.ScheduleService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScheduleController {
     private final ScheduleService scheduleService;
+    private final CommentService commentService;
 
     //일정 생성
     @PostMapping("/schedules")
@@ -49,5 +51,12 @@ public class ScheduleController {
     public ResponseEntity<Void> deleteSchedule(@PathVariable Long scheduleId){
         scheduleService.deleteSchedule(scheduleId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    //댓글 생성
+    @PostMapping("/schedules/comments/{scheduleId}")
+    public ResponseEntity<CreateCommentResponse> creatComment(@PathVariable Long scheduleId, @RequestBody CreateCommentRequest request){
+        CreateCommentResponse result = commentService.save(scheduleId, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

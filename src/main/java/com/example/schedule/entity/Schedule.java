@@ -22,9 +22,6 @@ public class Schedule {
     @Column(length = 200, nullable = false)
     private String content;  //일정 내용
 
-    @Column(length = 100, nullable = false)
-    private String comment;  //댓글
-
     @Column(length = 20, nullable = false)
     private String name;  //작성자 명
 
