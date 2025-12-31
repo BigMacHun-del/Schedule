@@ -314,7 +314,30 @@
 
 
 ## ERD
-![img.png](img.png)
+![img.png](image/ERD.png)
+
+
+## PostMan 실행 결과
+- 일정 생성
+![img.png](image/img.png)
+- 일정 전체 조회
+![img.png](image/img_1.png)
+- 일정 단 건 조회
+  ![img.png](image/img_2.png)
+
+- 일정 수정
+  ![img.png](image/img_3.png)
+
+- 일정 삭제
+  ![img.png](image/img_4.png)
+
+- 댓글 생성
+  ![img.png](image/img_5.png)
+
+- 일정 조회 업그레이드
+  ![img.png](image/img_6.png)
+
+
 
 ## 3 Layer Architecture(Controller, Service, Repository) 적용 여부와 필요성
 3 Layer Architecture를 패키지 별로 나누어서 진행 하였습니다. <br>
