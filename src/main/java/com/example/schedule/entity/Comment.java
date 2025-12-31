@@ -42,10 +42,10 @@ public class Comment {
     @Column(nullable = false)
     private Date commentUpdateDate;  //댓글 수정일
 
-    public Comment(String commentWriterName, String commentPassword, String commentContent, Long scheduleId){
+    public Comment(String commentContent, String commentWriterName, String commentPassword, Long scheduleId){
+        this.commentContent = commentContent;
         this.commentWriterName = commentWriterName;
         this.commentPassword = commentPassword;
-        this.commentContent = commentContent;
         this.scheduleId = scheduleId;
     }
 
