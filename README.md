@@ -314,3 +314,29 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
 
 ## ERD
 ![img.png](img.png)
+
+## 3 Layer Architecture(Controller, Service, Repository) 적용 여부와 필요성
+3 Layer Architecture를 패키지 별로 나누어서 진행 하였습니다. <br>
+이번 과제를 진행하며 3가지 계층에서 크게 와닿은 특징은
+Controller 계층에선 HTTP 요청을 매핑해주는 역할을 하고, Service 계층에서는 비즈니스 로적을 처리하고, Repository에서는 데이터베이스와 쿼리메소드를 통해 상호작용을 하는 역할을 하였습니다.
+<br> <br>
+물론 지금은 간단한 CRUD만 구현하는 것에 그쳤지만, 이러한 계층이 없다면 이번 과제처럼 간단한 CRUD 조차도 가독성이 너무 떨어져
+코드 수정이나, 재사용 하기가 정말 힘들 것 같고, 기본적인 틀안에서 코드를 작성하다 보니, 뭐부터 해야하지? 라는 막막함이 덜 했던 것 같습니다.
+<br><br>
+Repository 계층에서 쿼리 메소드를 통해 데이터 베이스 쿼리문을 한줄로 쭉 나타내는데 이러한 방식이 너무 신기하고, 되게 간편하긴 하지만
+정확히 이게 어떠한 방식으로 동작하는지 깨닫지는 못했습니다. 제 느낌상 그냥 메소드 명에 필드 명을 적었을 뿐인데 어떻게 데이터가 타입도
+보지않고, 매핑이 되어서 쿼리문을 수행하는지 의문이였던 것 같습니다.
+
+
+## @RequestParam, @PathVariable, @RequestBody 어노테이션의 정의와 특성
+`@RequestParam`은 쿼리 파라미터, `@PathVariable`는 경로 변수, `@RequestBody`는 요청 본문이다. 
+<br><br>
+`@RequestParam`은 키/값 구조로 받아오며 `required=false`로 옵션을 설정한다면, 필수값 조건이 없어져 있든 말든 상관 없게 된다. <br>
+이를 이용해서 `GET/schedules?name=김대훈` 와 같은 쿼리 파라미터(?Key=Value)를 사용해 작성자가 김대훈인 schedule을 찾을 수 있다.<br>
+이번 과제에서는 `@RequestParam`은 로직을 어떻게 구성해야하는 지 헷갈려 개념이 확실하게 잡힌 `@PathVariable`로 썼지만, 
+지금 생각해보니 댓글을 포함한 일정을 조회할 때나, 단건 조회 시 `@RequestParam`을 사용하면 더 좋았을 것 같다.
+<br><br>
+`@PathVariable`는 URL 경로 자체에 값이 포함되어 엔드포인트를 구성하기 때문에 반드시 값이 들어와야한다.
+앞서 설명한 `@RequestParam`은 쿼리 파라미터가 없어도 API 자체에 영항을 끼치지 않지만, `@PathVariable`은 없으면 아예 다른 API가 된다.
+<br><br>
+`@RequestBody`는 HTTP 요청 예를 들어 JSON 형식의 데이터가 들어 왔을 때, DTO 패키지안의 Request 객체를 이용하여 값을 매핑하는 기능을 수행한다.
