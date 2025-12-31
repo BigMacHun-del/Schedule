@@ -3,9 +3,8 @@
 - 시작 일 : 2025년 12월 29일
 
 ## 파일 구조와 진행 방식
-commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 하였고,<br>
-커밋 메시지를 통해 해당 기능에 대한 설명 하였습니다. 그리고, 설명이 부가적으로 필요한 기능 같은 경우에는
-해당 기능 코드에 주석으로 부가 설명을 덫붙였습니다.
+각 Lv의 작은 파트(기능)마다 commit 하였고, 커밋 메시지를 통해 해당 기능에 대한 설명 하였습니다. <br>
+그리고, 설명이 부가적으로 필요한 기능 같은 경우에는 해당 기능 코드에 주석으로 부가 설명을 덫붙였습니다.
 
 또한 branch는 각 스텝 별로 Lv_1, Lv_2, Lv_3, Lv_4, Lv_5, ...로 각각 나누어서 진행하였습니다.
 
@@ -27,7 +26,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
     	"password" : "1234"
     }
     ```
- - createDate, updateDate는 서버 자동 생성
+- createDate, updateDate는 서버 자동 생성
 
 **Response**
 - **Status Code: `201 Created`** 생성 성공
@@ -154,7 +153,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
 - **Method:** PUT
 - **API 엔드포인트:** PUT /schedules/{scheduleId}
 - **Path Parameters:** key: scheduleId, Type: Long, 필수
-- **Body:**  `title` , `name`입력 `password` 필수 입력 
+- **Body:**  `title` , `name`입력 `password` 필수 입력
 
     ```json lines
     {
@@ -190,7 +189,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
       "message": "비밀번호가 맞지 않거나 해당 일정을 찾을 수 없습니다."
     }
     ```
-  
+
 - **Status Code: `404 Not Found`** 리소스 없음
     - **Body:**
 
@@ -229,7 +228,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
 **Response**
 - **Status Code: `204 No Contents`** 삭제 성공
 
-    **설명:** 해당하는 scheduleId의 일정 삭제
+  **설명:** 해당하는 scheduleId의 일정 삭제
 
 
 - **Status Code: `401 Unauthorized`** 비밀 번호 오류
@@ -266,7 +265,7 @@ commit 에 대한 진행 방식은 각 Lv의 작은 파트(기능)마다 commit 
       "message": "요청을 처리하는 중 서버에서 오류가 발생했습니다."
     }
     ```
-  
+
 ## `댓글 생성`
 
 **Request**
@@ -331,11 +330,11 @@ Repository 계층에서 쿼리 메소드를 통해 데이터 베이스 쿼리문
 
 
 ## @RequestParam, @PathVariable, @RequestBody 어노테이션의 정의와 특성
-`@RequestParam`은 쿼리 파라미터, `@PathVariable`는 경로 변수, `@RequestBody`는 요청 본문입니다. 
+`@RequestParam`은 쿼리 파라미터, `@PathVariable`는 경로 변수, `@RequestBody`는 요청 본문입니다.
 <br><br>
 `@RequestParam`은 키/값 구조로 받아오며 `required=false`로 옵션을 설정한다면, 필수값 조건이 없어져 있든 말든 상관 없게 됩니다. <br>
 이를 이용해서 `GET/schedules?name=김대훈` 와 같은 쿼리 파라미터(?Key=Value)를 사용해 작성자가 김대훈인 schedule을 찾을 수 있습니다.<br>
-이번 과제에서는 `@RequestParam`은 로직을 어떻게 구성해야하는 지 헷갈려 개념이 확실하게 잡힌 `@PathVariable`로 썼지만, 
+이번 과제에서는 `@RequestParam`은 로직을 어떻게 구성해야하는 지 헷갈려 개념이 확실하게 잡힌 `@PathVariable`로 썼지만,
 지금 생각해보니 댓글을 포함한 일정을 조회할 때나, 단건 조회 시 `@RequestParam`을 사용하면 더 좋았을 것 같습니다.
 <br><br>
 `@PathVariable`는 URL 경로 자체에 값이 포함되어 엔드포인트를 구성하기 때문에 반드시 값이 들어와야합니다.
