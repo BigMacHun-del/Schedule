@@ -22,6 +22,7 @@ public class Comment {
     @Column(nullable = false)
     private Long scheduleId;  //댓글 달 일정의 id
 
+    //참고, 외래키 방식
 //    @ManyToOne(fetch = FetchType.LAZY)  //다대일 선언
 //    @JoinColumn(name = "scheduleId", nullable = false)  //외래키 정의
 //    private Schedule schedule;

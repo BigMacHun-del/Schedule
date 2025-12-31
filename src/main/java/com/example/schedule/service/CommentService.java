@@ -80,7 +80,7 @@ public class CommentService {
                 schedule.getName(),
                 schedule.getCreateDate(),
                 schedule.getUpdateDate(),
-                dtos//scheduleId값을 가진 comment들 모두 출력
+                dtos  //scheduleId값을 가진 comment들 모두 출력
         );
     }
 }

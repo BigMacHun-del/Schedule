@@ -1,7 +1,6 @@
 package com.example.schedule.controller;
 
 import com.example.schedule.dto.Schedule.*;
-import com.example.schedule.service.CommentService;
 import com.example.schedule.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScheduleController {
     private final ScheduleService scheduleService;
-    private final CommentService commentService;
 
     //일정 생성
     @PostMapping("/schedules")

@@ -54,6 +54,7 @@ public class Schedule {
         updateDate = new Date();
     }
 
+    //업데이트 할 요소 Setter
     public void updateSchedule(String title, String name){
         this.title = title;
         this.name = name;
